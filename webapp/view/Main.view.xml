@@ -15,7 +15,7 @@
                 </Toolbar>
             </headerToolbar>
             <items>
-                <ObjectListItem id="objListItem" type="Navigation" title="{name}"></ObjectListItem>
+                <ObjectListItem id="objListItem" type="Navigation" title="{description}"></ObjectListItem>
             </items>
         </List>
         </content>
