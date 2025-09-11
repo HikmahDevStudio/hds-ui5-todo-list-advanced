@@ -1,19 +1,14 @@
 {
   "tasks": [
     {
-      "name": "grapes",
-      "color": "purple",
-      "taste": "alkaline",
-      "size": "small",
-      "price": 55,
-      "curr": "INR",
-      "healthBenefit": "high in antioxidants, may prevent chronic diseases",
-      "season": "summer",
-      "availability": "A",
-      "image": "https://i.ndtvimg.com/i/2015-09/grapes_625x350_61443376353.jpg"
+      "description": "grapes",
+      "status": "purple",
+      "isImportant": "alkaline",
+      "startDate": "small",
+      "endDate": 55
     },
     {
-      "name": "mango",
+      "description": "mango",
       "color": "orange-yellow",
       "taste": "alkaline",
       "size": "medium",
@@ -25,7 +20,7 @@
       "image": "https://c.ndtvimg.com/mangoes_625x300_1527514629119.jpg"
     },
     {
-      "name": "pineapple",
+      "description": "pineapple",
       "color": "yellow",
       "taste": "citrus",
       "size": "medium",
