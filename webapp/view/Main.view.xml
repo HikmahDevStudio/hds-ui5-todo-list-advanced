@@ -1,0 +1,23 @@
+<mvc:View controllerName="hds.ui5.todolistmultiselect.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>titleMainView}">
+        <headerContent>
+            <Button id="btn" icon="sap-icon://action" tooltip="Go to next" press="onNext"></Button>
+        </headerContent>
+        <content>
+        <SearchField id="idSearch" search="onSearch" />
+        <List id="idListMain" items="{/tasks}" itemPress="onTaskItemPress" mode="MultiSelect" delete="onTaskItemDelete"> 
+            <headerToolbar>
+                <Toolbar id="headerToolbar">
+                    <ToolbarSpacer id="toolbarspacer1"/>
+                    <Button id="idBtnDeleteTasks" tooltip="Delete" icon="sap-icon://delete" press="onDeleteItems" />
+                </Toolbar>
+            </headerToolbar>
+            <items>
+                <ObjectListItem id="objListItem" type="Navigation" title="{name}"></ObjectListItem>
+            </items>
+        </List>
+        </content>
+    </Page>
+</mvc:View>
