@@ -1,4 +1,4 @@
-<mvc:View controllerName="hds.ui5.todolistmultiselect.controller.Main"
+<mvc:View controllerName="hds.ui5.todolistadvance.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="page" title="{i18n>titleMainView}">

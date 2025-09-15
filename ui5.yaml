@@ -2,7 +2,7 @@
 
 specVersion: "3.1"
 metadata:
-  name: hds.ui5.todolistmultiselect
+  name: hds.ui5.todolistadvance
 type: application
 server:
   customMiddleware:
