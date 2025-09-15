@@ -1,7 +1,7 @@
 {
   "_version": "1.76.0",
   "sap.app": {
-    "id": "hds.ui5.todolistmultiselect",
+    "id": "hds.ui5.todolistadvance",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -53,7 +53,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "hds.ui5.todolistmultiselect.i18n.i18n"
+          "bundleName": "hds.ui5.todolistadvance.i18n.i18n"
         }
       }
     },
@@ -72,26 +72,27 @@
         "transition": "slide",
         "type": "View",
         "viewType": "XML",
-        "path": "hds.ui5.todolistmultiselect.view",
+        "path": "hds.ui5.todolistadvance.view",
         "async": true,
-        "viewPath": "hds.ui5.todolistmultiselect.view"
+        "viewPath": "hds.ui5.todolistadvance.view"
       },
       "routes": [
         {
-          "name": "MainView",
+          "name": "mainViewRoute",
           "pattern": "",
-          "target": ["TargetMainView"]
+          "target": ["MainViewTarget"]
         }
       ],
       "targets": {
-        "TargetMainView": {
-          "id": "idMainView",
-          "name": "Main"
+        "MainViewTarget": {
+          "id": "idMainViewTarget",
+          "name": "Main",
+          "controlAggregation": "pages"
         }
       }
     },
     "rootView": {
-      "viewName": "hds.ui5.todolistmultiselect.view.App",
+      "viewName": "hds.ui5.todolistadvance.view.App",
       "type": "XML",
       "id": "App",
       "async": true
