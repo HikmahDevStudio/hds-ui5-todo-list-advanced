@@ -1,1 +1,17 @@
 /* Enter your custom styles here */
+
+.centeredPage {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.hoverActions {
+  visibility: hidden;
+}
+
+.sapMLIB:hover {
+  opacity: 0.95;
+}
+.sapMLIB:hover .hoverActions {
+  visibility: visible;
+}

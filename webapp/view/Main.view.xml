@@ -1,23 +1,59 @@
 <mvc:View controllerName="hds.ui5.todolistadvance.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>titleMainView}">
-        <headerContent>
-            <Button id="btn" icon="sap-icon://action" tooltip="Go to next" press="onNext"></Button>
-        </headerContent>
+    <Page id="page" title="{i18n>titleMainView}" >
         <content>
-        <SearchField id="idSearch" search="onSearch" />
-        <List id="idListMain" items="{/tasks}" itemPress="onTaskItemPress" mode="MultiSelect" delete="onTaskItemDelete"> 
-            <headerToolbar>
-                <Toolbar id="headerToolbar">
-                    <ToolbarSpacer id="toolbarspacer1"/>
-                    <Button id="idBtnDeleteTasks" tooltip="Delete" icon="sap-icon://delete" press="onDeleteItems" />
-                </Toolbar>
-            </headerToolbar>
-            <items>
-                <ObjectListItem id="objListItem" type="Navigation" title="{description}"></ObjectListItem>
-            </items>
-        </List>
-        </content>
+            <Input
+                id="inputTask"
+                submit="submitTaskHandler" 
+                class="sapUiSmallMarginEnd sapUiSmallMarginBegin sapUiContentPadding"
+                width="250px"
+                placeholder="Please add new task"/>
+                <List
+                    id="taskList_pending"
+                    includeItemInSelection="true"
+                    mode="MultiSelect"
+                    items="{
+                        path : '/tasks',
+                        sorter : {
+                            path : 'Status',
+                            descending:true,
+                            group : true
+                        }
+                    }"
+                    >
+                    <CustomListItem id="customListItem">
+                        <HBox id="hbox_custLstItm" justifyContent="SpaceBetween" alignItems="Center">
+                            <Link id="link" text="{title}" target="{title}" press="handlePress"/>
+                            <HBox id="alighment" justifyContent="End" alignItems="Center">
+                                <Text id="idPriority" text="{priority}" class="sapUiSmallMarginEnd"/>
+                                <DatePicker id="datePicker"></DatePicker>
+                                <HBox id="taskActions" class="hoverActions">
+                                    <Button id="btnDelete" text="" icon="sap-icon://delete" class=" sapUiSmallMarginTopBottom"/>
+                                    <Button id="btnEdit" text="" icon="sap-icon://edit" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
+                                    <Button id="btnComplete" text="" icon="sap-icon://complete" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom sapUiSmallMarginEnd" />
+                                </HBox> 
+                            </HBox>
+                            
+                        </HBox>
+                    </CustomListItem>
+                </List>
+            
+            
+                <List id="taskList_completed">
+                    <items>
+                        <StandardListItem id="todolistItemCompleted" title="{title}"/>
+                    </items>
+                </List>
+             </content>
+        <footer>
+            <Toolbar id="toolbarFooter">
+                <Text
+                    id="footertext"
+                    text="Developed @ Hikmah Dev Studio by Shahabuddin Ansari"
+                />
+            </Toolbar>
+        </footer>
     </Page>
 </mvc:View>
