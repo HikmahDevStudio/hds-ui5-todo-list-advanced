@@ -4,12 +4,15 @@
     xmlns="sap.m">
     <Page id="page" title="{i18n>titleMainView}" >
         <content>
-            <Input
-                id="inputTask"
-                submit="submitTaskHandler" 
-                class="sapUiSmallMarginEnd sapUiSmallMarginBegin sapUiContentPadding"
-                width="250px"
-                placeholder="Please add new task"/>
+            <HBox id="inputHbox">
+                <Input
+                    id="inputTask"
+                    submit="submitTaskHandler" 
+                    class="sapUiSmallMarginEnd sapUiSmallMarginBegin sapUiContentPadding"
+                    width="250px"
+                    placeholder="Please add new task"/>
+                <!-- <DatePicker id="idDatePickerInput"></DatePicker> -->
+            </HBox>
                 <List
                     id="taskList_pending"
                     includeItemInSelection="true"
@@ -28,7 +31,7 @@
                             <Link id="link" text="{title}" target="{title}" press="handlePress"/>
                             <HBox id="alighment" justifyContent="End" alignItems="Center">
                                 <Text id="idPriority" text="{priority}" class="sapUiSmallMarginEnd"/>
-                                <DatePicker id="datePicker"></DatePicker>
+                                
                                 <HBox id="taskActions" class="hoverActions">
                                     <Button id="btnDelete" text="" icon="sap-icon://delete" class=" sapUiSmallMarginTopBottom"/>
                                     <Button id="btnEdit" text="" icon="sap-icon://edit" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
