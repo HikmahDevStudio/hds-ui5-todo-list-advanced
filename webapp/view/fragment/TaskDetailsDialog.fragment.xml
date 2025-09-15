@@ -1,4 +1,13 @@
 <core:FragmentDefinition xmlns="sap.m"
     xmlns:core="sap.ui.core">
-    <Dialog id="idDialogMain" title="Dialog Title"></Dialog>
+    <Dialog id="idDialogMain" title="Dialog Title">
+        <content>
+            
+            
+        </content>
+        <buttons>
+            <Button id="idClearDialogBox" press="closeDialogBoxHandler" text="Close" type="Reject"></Button>
+            <Button id="idCloseDialogBox" press="closeDialogBoxHandler" text="Submit" type="Accept"></Button>
+        </buttons>
+    </Dialog>
 </core:FragmentDefinition>

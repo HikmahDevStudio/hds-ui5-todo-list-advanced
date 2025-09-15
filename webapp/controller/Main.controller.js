@@ -10,11 +10,15 @@ sap.ui.define(
           this.pDialog = this.loadFragment({
             name: "hds.ui5.todolistadvance.view.fragment.TaskDetailsDialog",
           });
-
-          this.pDialog.then(function (oDialog) {
-            oDialog.open();
-          });
         }
+
+        this.pDialog.then(function (oDialog) {
+          oDialog.open();
+        });
+      },
+
+      closeDialogBoxHandler() {
+        this.byId("idDialogMain").close();
       },
     });
   }
