@@ -2,8 +2,19 @@
     xmlns:core="sap.ui.core">
     <Dialog id="idDialogMain" title="Dialog Title">
         <content>
-            
-            
+            <DatePicker id="idDateTask"></DatePicker>
+            <Select
+                id="idPriorityDialog"
+                enabled="{/Enabled}"
+                editable="{/Editable}"
+                forceSelection="false"
+                selectedKey="{/SelectedProduct2}"
+                items="{
+                    path: '/ProductCollection2',
+                    sorter: { path: 'Name' }
+                }">
+                <core:Item id="dropDownItems" key="{ProductId}" text="{Name}" />
+			</Select>
         </content>
         <buttons>
             <Button id="idClearDialogBox" press="closeDialogBoxHandler" text="Close" type="Reject"></Button>
