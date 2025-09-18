@@ -2,7 +2,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>titleMainView}" >
+    <Page id="page" title="{i18n>titleMainView}">
         <content>
             <HBox id="inputHbox">
                 <Input
@@ -11,7 +11,6 @@
                     class="sapUiSmallMarginEnd sapUiSmallMarginBegin sapUiContentPadding"
                     width="250px"
                     placeholder="Please add new task"/>
-                <!-- <DatePicker id="idDatePickerInput"></DatePicker> -->
             </HBox>
                 <List
                     id="taskList_pending"
@@ -24,8 +23,7 @@
                             descending:true,
                             group : true
                         }
-                    }"
-                    >
+                    }">
                     <CustomListItem id="customListItem">
                         <HBox id="hbox_custLstItm" justifyContent="SpaceBetween" alignItems="Center">
                             <Link id="link" text="{title}" target="{title}" press="handlePress"/>
@@ -42,8 +40,6 @@
                         </HBox>
                     </CustomListItem>
                 </List>
-            
-            
                 <List id="taskList_completed">
                     <items>
                         <StandardListItem id="todolistItemCompleted" title="{title}"/>
@@ -54,8 +50,7 @@
             <Toolbar id="toolbarFooter">
                 <Text
                     id="footertext"
-                    text="Developed @ Hikmah Dev Studio by Shahabuddin Ansari"
-                />
+                    text="Developed @ Hikmah Dev Studio by Shahabuddin Ansari" />
             </Toolbar>
         </footer>
     </Page>
