@@ -6,7 +6,7 @@
         <content>
             <HBox id="inputHbox">
                 <Input
-                    id="inputTask"
+                    id="idInputTask"
                     submit="submitTaskHandler" 
                     class="sapUiSmallMarginEnd sapUiSmallMarginBegin sapUiContentPadding"
                     width="250px"

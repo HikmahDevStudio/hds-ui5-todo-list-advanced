@@ -6,6 +6,13 @@ sap.ui.define(
     return Controller.extend("hds.ui5.todolistadvance.controller.View1", {
       onInit() {},
       submitTaskHandler() {
+        const sInputTask = this.getView().byId("idInputTask").getValue();
+
+        if (!sInputTask.trim()) {
+          this.getView().byId("idInputTask").setValue("");
+          return;
+        }
+
         if (!this.pDialog) {
           this.pDialog = this.loadFragment({
             name: "hds.ui5.todolistadvance.view.fragment.TaskDetailsDialog",
@@ -17,7 +24,14 @@ sap.ui.define(
         });
       },
 
-      closeDialogBoxHandler() {
+      addTaskDialogBoxHandler() {
+        this.byId("idDialogMain").close();
+
+        // const sCurrentInputTask = this.getView().byId("idInputTask").getValue();
+        this.getView().byId("idInputTask").setValue("");
+      },
+
+      cancelTaskDialogBoxHandler() {
         this.byId("idDialogMain").close();
       },
     });
