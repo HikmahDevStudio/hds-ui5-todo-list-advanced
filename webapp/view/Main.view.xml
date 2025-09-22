@@ -32,7 +32,6 @@
                                     <Button enabled="{= ${Status} !== 'Completed' }" id="btnComplete" press="markCompleteteTaskHandler" text="" icon="sap-icon://complete" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom sapUiSmallMarginEnd" />
                                 </HBox> 
                             </HBox>
-                            
                         </HBox>
                     </CustomListItem>
                 </List>
