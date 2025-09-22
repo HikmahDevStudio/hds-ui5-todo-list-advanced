@@ -198,8 +198,14 @@ sap.ui.define(
           .setDateValue(new Date(dueDate));
 
         this.getView().byId("idInputTaskDescription").setValue(title);
-        this.getView().byId("idPriorityInputTask").setSelectedKey(priority);
-        this.getView().byId("idCategoryInputTask").setSelectedKey(category);
+
+        this.getView()
+          .byId("idPriorityInputTask")
+          .setSelectedKey(priority.toUpperCase());
+
+        this.getView()
+          .byId("idCategoryInputTask")
+          .setSelectedKey(category.toUpperCase());
       },
 
       markCompleteteTaskHandler(oEvent) {
