@@ -5,6 +5,10 @@ sap.ui.define(
 
     return Controller.extend("hds.ui5.todolistadvance.controller.View1", {
       onInit() {},
+      inputTaskOnChangeHandler(oEvent) {
+        const sInput = oEvent.getParameter("value");
+        console.log(sInput);
+      },
       openAddTaskDialog() {
         // const sInputTask = this.getView().byId("idInputTask").getValue();
 
@@ -19,16 +23,26 @@ sap.ui.define(
           });
         }
 
+        const that = this;
         this.pDialog.then(function (oDialog) {
+          that.resetInputTasksFields();
           oDialog.open();
         });
       },
 
       addTaskDialogBoxHandler() {
-        const oView = this.getView();
         const taskDescription = this.getView()
           .byId("idInputTaskDescription")
           .getValue();
+
+        if (!taskDescription.trim()) {
+          const oInputDesc = this.getView().byId("idInputTaskDescription");
+          oInputDesc.setValueState("Error");
+          oInputDesc.setValueStateText("This field is mandatory!");
+
+          return;
+        }
+
         const taskDueDate = this.getView()
           .byId("idDatePickerInputTask")
           .getValue();
@@ -42,18 +56,24 @@ sap.ui.define(
           .getText();
 
         const oInputTask = {
-          id: new Date().getTime(),
+          id: new Date().getTime().toString(),
           title: taskDescription,
           priority: taskPriority,
           dueDate: taskDueDate,
+          category: taskCategory,
           Status: "Pending",
         };
 
         const oModel = this.getView().getModel();
         const aTaskList = oModel.getProperty("/tasks") || [];
         oModel.setProperty("/tasks", [...aTaskList, oInputTask]);
-
         this.byId("idDialogMain").close();
+      },
+
+      resetInputTasksFields() {
+        const oInputDesc = this.getView().byId("idInputTaskDescription");
+        oInputDesc.setValueState("None");
+        oInputDesc.setValueStateText(null);
 
         this.getView().byId("idInputTaskDescription").setValue("");
         this.getView().byId("idDatePickerInputTask").setValue(null);
@@ -70,7 +90,6 @@ sap.ui.define(
 
         const oModel = this.getView().getModel();
         const aTask = oModel.getProperty("/tasks") || [];
-
         const aUpdatedTask = aTask.filter((task) => task.id !== id);
 
         oModel.setProperty("/tasks", aUpdatedTask);
