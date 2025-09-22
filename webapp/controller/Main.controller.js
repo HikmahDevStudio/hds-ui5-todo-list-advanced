@@ -1,6 +1,6 @@
 sap.ui.define(
-  ["sap/ui/core/mvc/Controller", "sap/ui/core/Fragment"],
-  (Controller, Fragment) => {
+  ["sap/ui/core/mvc/Controller", "sap/ui/core/Fragment", "sap/m/MessageToast"],
+  (Controller, Fragment, MessageToast) => {
     "use strict";
 
     return Controller.extend("hds.ui5.todolistadvance.controller.View1", {
@@ -31,15 +31,6 @@ sap.ui.define(
         const taskDescription = this.getView()
           .byId("idInputTaskDescription")
           .getValue();
-
-        if (!taskDescription.trim()) {
-          const oInputDesc = this.getView().byId("idInputTaskDescription");
-          oInputDesc.setValueState("Error");
-          oInputDesc.setValueStateText("This field is mandatory!");
-
-          return;
-        }
-
         const taskDueDate = this.getView()
           .byId("idDatePickerInputTask")
           .getValue();
@@ -61,10 +52,55 @@ sap.ui.define(
           Status: "Pending",
         };
 
+        const isMandatoryFieldMissing = this.validateTaskInputDetails();
+
+        if (isMandatoryFieldMissing) {
+          MessageToast.show("Please provide missing details", {
+            width: "250px",
+          });
+          return;
+        }
+
         const oModel = this.getView().getModel();
         const aTaskList = oModel.getProperty("/tasks") || [];
         oModel.setProperty("/tasks", [...aTaskList, oInputTask]);
         this.byId("idDialogMain").close();
+      },
+
+      validateTaskInputDetails() {
+        const oInputDesc = this.getView().byId("idInputTaskDescription");
+        const oTaskDueDate = this.getView().byId("idDatePickerInputTask");
+        const oTaskPriority = this.getView().byId("idPriorityInputTask");
+        const oTaskCategory = this.getView().byId("idCategoryInputTask");
+
+        const sInputDesc = oInputDesc.getValue().trim();
+        const sTaskDueDate = oTaskDueDate.getValue();
+        const sTaskPriority = oTaskPriority.getSelectedKey();
+        const sTaskCategory = oTaskCategory.getSelectedKey();
+
+        let isMandatoryFieldsMissing = false;
+
+        if (!sInputDesc) {
+          isMandatoryFieldsMissing = true;
+          oInputDesc.setValueState("Error");
+        }
+
+        if (!sTaskDueDate) {
+          isMandatoryFieldsMissing = true;
+          oTaskDueDate.setValueState("Error");
+        }
+
+        if (!sTaskPriority) {
+          isMandatoryFieldsMissing = true;
+          oTaskPriority.setValueState("Error");
+        }
+
+        if (!sTaskCategory) {
+          isMandatoryFieldsMissing = true;
+          oTaskCategory.setValueState("Error");
+        }
+
+        return isMandatoryFieldsMissing;
       },
 
       resetInputTasksFields() {
