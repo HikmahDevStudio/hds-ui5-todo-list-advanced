@@ -24,11 +24,10 @@
                             <Link id="link" text="{title}" target="{title}" press="handlePress"/>
                             <HBox id="alighment" justifyContent="End" alignItems="Center">
                                 <Text id="idPriority" text="{priority}" class="sapUiSmallMarginEnd"/>
-                                
                                 <HBox id="taskActions" class="hoverActions">
-                                    <Button id="btnDelete" text="" icon="sap-icon://delete" class=" sapUiSmallMarginTopBottom"/>
-                                    <Button id="btnEdit" text="" icon="sap-icon://edit" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
-                                    <Button id="btnComplete" text="" icon="sap-icon://complete" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom sapUiSmallMarginEnd" />
+                                    <Button id="btnDelete" press="deleteTaskHandler" text="" icon="sap-icon://delete" class=" sapUiSmallMarginTopBottom"/>
+                                    <Button id="btnEdit" press="editTaskHandler" text="" icon="sap-icon://edit" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
+                                    <Button id="btnComplete" press="markCompleteteTaskHandler" text="" icon="sap-icon://complete" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom sapUiSmallMarginEnd" />
                                 </HBox> 
                             </HBox>
                             

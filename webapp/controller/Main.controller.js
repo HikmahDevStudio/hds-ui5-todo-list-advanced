@@ -41,13 +41,44 @@ sap.ui.define(
           .getSelectedItem()
           .getText();
 
+        const oInputTask = {
+          id: new Date().getTime(),
+          title: taskDescription,
+          priority: taskPriority,
+          dueDate: taskDueDate,
+          Status: "Pending",
+        };
+
+        const oModel = this.getView().getModel();
+        const aTaskList = oModel.getProperty("/tasks") || [];
+        oModel.setProperty("/tasks", [...aTaskList, oInputTask]);
+
         this.byId("idDialogMain").close();
-        this.getView().byId("idInputTask").setValue("");
+
+        this.getView().byId("idInputTaskDescription").setValue("");
+        this.getView().byId("idDatePickerInputTask").setValue(null);
+        this.getView().byId("idPriorityInputTask").setSelectedItem(null);
+        this.getView().byId("idCategoryInputTask").setSelectedItem(null);
       },
 
       cancelTaskDialogBoxHandler() {
         this.byId("idDialogMain").close();
       },
+
+      deleteTaskHandler(event) {
+        const { id } = event.getSource().getBindingContext().getObject();
+
+        const oModel = this.getView().getModel();
+        const aTask = oModel.getProperty("/tasks") || [];
+
+        const aUpdatedTask = aTask.filter((task) => task.id !== id);
+
+        oModel.setProperty("/tasks", aUpdatedTask);
+      },
+
+      editTaskHandler() {},
+
+      markCompleteteTaskHandler() {},
     });
   }
 );
