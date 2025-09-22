@@ -5,18 +5,17 @@ sap.ui.define(
 
     return Controller.extend("hds.ui5.todolistadvance.controller.View1", {
       onInit() {},
+
+      onTaskSubmit() {
+        this.addTaskDialogBoxHandler();
+      },
+
       inputTaskOnChangeHandler(oEvent) {
         const sInput = oEvent.getParameter("value");
         console.log(sInput);
       },
+
       openAddTaskDialog() {
-        // const sInputTask = this.getView().byId("idInputTask").getValue();
-
-        // if (!sInputTask.trim()) {
-        //   this.getView().byId("idInputTask").setValue("");
-        //   return;
-        // }
-
         if (!this.pDialog) {
           this.pDialog = this.loadFragment({
             name: "hds.ui5.todolistadvance.view.fragment.TaskDetailsDialog",
@@ -97,7 +96,25 @@ sap.ui.define(
 
       editTaskHandler() {},
 
-      markCompleteteTaskHandler() {},
+      markCompleteteTaskHandler(oEvent) {
+        const { id } = oEvent.getSource().getBindingContext().getObject();
+
+        const oModel = this.getView().getModel();
+        const aAllTask = oModel.getProperty("/tasks") || [];
+
+        const aUpdatedTask = aAllTask.map((task) => {
+          if (task.id === id) {
+            return {
+              ...task,
+              Status: "Completed",
+            };
+          } else {
+            return task;
+          }
+        });
+
+        oModel.setProperty("/tasks", aUpdatedTask);
+      },
     });
   }
 );

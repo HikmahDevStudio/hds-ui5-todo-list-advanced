@@ -10,7 +10,7 @@
                 <List
                     id="taskList_pending"
                     includeItemInSelection="true"
-                    mode="MultiSelect"
+                    mode="None"
                     items="{
                         path : '/tasks',
                         sorter : {
@@ -21,13 +21,14 @@
                     }">
                     <CustomListItem id="customListItem">
                         <HBox id="hbox_custLstItm" justifyContent="SpaceBetween" alignItems="Center">
-                            <Link id="link" text="{title}" target="{title}" press="handlePress"/>
+                            <Text id="link" text="{title}" class="sapUiSmallMarginBegin"/>
                             <HBox id="alighment" justifyContent="End" alignItems="Center">
-                                <Text id="idPriority" text="{priority}" class="sapUiSmallMarginEnd"/>
+                                <Text id="idDueDate" text="{dueDate}" class="hoverActions sapUiSmallMarginEnd"/>
+                                <Text id="idPriority" text="{priority}" class="hoverActions sapUiSmallMarginEnd"/>
                                 <HBox id="taskActions" class="hoverActions">
                                     <Button id="btnDelete" press="deleteTaskHandler" text="" icon="sap-icon://delete" class=" sapUiSmallMarginTopBottom"/>
-                                    <Button id="btnEdit" press="editTaskHandler" text="" icon="sap-icon://edit" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
-                                    <Button id="btnComplete" press="markCompleteteTaskHandler" text="" icon="sap-icon://complete" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom sapUiSmallMarginEnd" />
+                                    <Button id="btnEdit" enabled="{= ${Status} !== 'Completed' }" press="editTaskHandler" text="" icon="sap-icon://edit" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
+                                    <Button enabled="{= ${Status} !== 'Completed' }" id="btnComplete" press="markCompleteteTaskHandler" text="" icon="sap-icon://complete" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom sapUiSmallMarginEnd" />
                                 </HBox> 
                             </HBox>
                             
