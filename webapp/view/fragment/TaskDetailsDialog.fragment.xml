@@ -2,7 +2,7 @@
     <Dialog id="idDialogMain" title="{i18n>TaskDialogTitle}">
         <content>
             <VBox id="idInputVbox" width="100%" class="dialogContent">
-                <Input id="idInputTaskDescription" placeholder="Task description" required="true"/>
+                <Input submit="onTaskSubmit" id="idInputTaskDescription" liveChange="inputTaskOnChangeHandler" placeholder="Task description" required="true"/>
             </VBox>
             <HBox id="idDatePickerHbox" justifyContent="Start" alignItems="Center" class="sapUiSmallMarginTop">
                 <Label id="idLabelTaskDatePicker" text="Due date" class="sapUiTinyMargin" width="70px"/>
@@ -12,7 +12,7 @@
                 <Label id="idTaskPriorityLabel" text="Priority" width="70px" class="sapUiTinyMargin"/>
                 <Select id="idPriorityInputTask" items="{/priority}" width="150px">
                     <items>
-                        <core:Item id="idSelectItemsPriority" text="{title}" key="{id}"/>
+                        <core:Item id="idSelectItemsPriority" text="{title}" key="{title}"/>
                     </items>
                 </Select>
             </HBox>
@@ -20,7 +20,7 @@
                 <Label id="idTaskCategoryLabel" text="Category" width="70px" class="sapUiTinyMargin"/>
                 <Select id="idCategoryInputTask" items="{/category}" width="150px">
                     <items>
-                        <core:Item id="idSelectItemsCategory" text="{title}" key="{id}"/>
+                        <core:Item id="idSelectItemsCategory" text="{title}" key="{title}"/>
                     </items>
                 </Select>
             </HBox>
