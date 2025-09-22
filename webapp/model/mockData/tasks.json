@@ -1,136 +1,35 @@
 {
-  "tasks": [
+  "tasks": [],
+  "priority": [
     {
       "id": 1,
-      "title": "Task1",
-      "desc": "task Description",
-      "priority": "Medium",
-      "highlight": "Success",
-      "infoState": "Success",
-      "info": "Completed",
-      "dueDate": "NA",
-      "Status": "Completed"
-    },
-    {
-      "id": 3,
-      "title": "Task3",
-      "desc": "task Description",
-      "priority": "Medium",
-      "icon": "sap-icon://sys-enter-2",
-      "highlight": "Success",
-      "info": "Completed",
-      "dueDate": "NA",
-      "Status": "Completed"
-    },
-    {
-      "id": 1,
-      "title": "Task1",
-      "desc": "task Description",
-      "priority": "Medium",
-      "highlight": "Success",
-      "infoState": "Success",
-      "info": "Completed",
-      "dueDate": "NA",
-      "Status": "Completed"
-    },
-    {
-      "id": 3,
-      "title": "Task3",
-      "desc": "task Description",
-      "priority": "Medium",
-      "icon": "sap-icon://sys-enter-2",
-      "highlight": "Success",
-      "info": "Completed",
-      "dueDate": "NA",
-      "Status": "Completed"
-    },
-    {
-      "id": 5,
-      "title": "Task5",
-      "desc": "task Description",
-      "priority": "Medium",
-      "highlight": "Success",
-      "infoState": "Success",
-      "info": "In Progress",
-      "dueDate": "NA",
-      "Status": "In Progress"
-    },
-    {
-      "id": 15,
-      "title": "Task15",
-      "desc": "task Description",
-      "priority": "Medium",
-      "highlight": "Success",
-      "infoState": "Success",
-      "info": "In Progress",
-      "dueDate": "NA",
-      "Status": "In Progress"
-    },
-    {
-      "id": 5,
-      "title": "Task5",
-      "desc": "task Description",
-      "priority": "Medium",
-      "highlight": "Success",
-      "infoState": "Success",
-      "info": "In Progress",
-      "dueDate": "NA",
-      "Status": "In Progress"
-    },
-    {
-      "id": 15,
-      "title": "Task15",
-      "desc": "task Description",
-      "priority": "Medium",
-      "highlight": "Success",
-      "infoState": "Success",
-      "info": "In Progress",
-      "dueDate": "NA",
-      "Status": "In Progress"
+      "title": "Low"
     },
     {
       "id": 2,
-      "title": "Task2",
-      "desc": "task Description",
-      "priority": "Medium",
-      "highlight": "Error",
-      "infoState": "Error",
-      "info": "Pending",
-      "dueDate": "NA",
-      "Status": "Pending"
+      "title": "Medium"
     },
     {
-      "id": 12,
-      "title": "Task12",
-      "desc": "task Description",
-      "priority": "Medium",
-      "highlight": "Error",
-      "infoState": "Error",
-      "info": "Pending",
-      "dueDate": "NA",
-      "Status": "Pending"
+      "id": 3,
+      "title": "High"
+    },
+    {
+      "id": 4,
+      "title": "Critical"
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "title": "1"
     },
     {
       "id": 2,
-      "title": "Task2",
-      "desc": "task Description",
-      "priority": "Medium",
-      "highlight": "Error",
-      "infoState": "Error",
-      "info": "Pending",
-      "dueDate": "NA",
-      "Status": "Pending"
+      "title": "2"
     },
     {
-      "id": 12,
-      "title": "Task12",
-      "desc": "task Description",
-      "priority": "Medium",
-      "highlight": "Error",
-      "infoState": "Error",
-      "info": "Pending",
-      "dueDate": "NA",
-      "Status": "Pending"
+      "id": 3,
+      "title": "3"
     }
   ]
 }
