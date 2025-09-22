@@ -21,9 +21,10 @@
                     }">
                     <CustomListItem id="customListItem">
                         <HBox id="hbox_custLstItm" justifyContent="SpaceBetween" alignItems="Center">
-                            <Text id="link" text="{title}" class="sapUiSmallMarginBegin"/>
+                            <Text id="idTaskTitle" text="{title}" class="sapUiSmallMarginBegin"/>
                             <HBox id="alighment" justifyContent="End" alignItems="Center">
                                 <Text id="idDueDate" text="{dueDate}" class="hoverActions sapUiSmallMarginEnd"/>
+                                <Text id="idCategory" text="{category}" class="hoverActions sapUiSmallMarginEnd"/>
                                 <Text id="idPriority" text="{priority}" class="hoverActions sapUiSmallMarginEnd"/>
                                 <HBox id="taskActions" class="hoverActions">
                                     <Button id="btnDelete" press="deleteTaskHandler" text="" icon="sap-icon://delete" class=" sapUiSmallMarginTopBottom"/>

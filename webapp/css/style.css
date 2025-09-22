@@ -19,3 +19,7 @@
 .dialogContent {
   padding: 0.5rem;
 }
+
+.taskCompleted {
+  text-decoration: line-through;
+}

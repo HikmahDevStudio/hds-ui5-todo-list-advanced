@@ -22,9 +22,7 @@ sap.ui.define(
           });
         }
 
-        const that = this;
         this.pDialog.then(function (oDialog) {
-          that.resetInputTasksFields();
           oDialog.open();
         });
       },
@@ -84,8 +82,8 @@ sap.ui.define(
         this.byId("idDialogMain").close();
       },
 
-      deleteTaskHandler(event) {
-        const { id } = event.getSource().getBindingContext().getObject();
+      deleteTaskHandler(oEvent) {
+        const { id } = oEvent.getSource().getBindingContext().getObject();
 
         const oModel = this.getView().getModel();
         const aTask = oModel.getProperty("/tasks") || [];
@@ -94,7 +92,21 @@ sap.ui.define(
         oModel.setProperty("/tasks", aUpdatedTask);
       },
 
-      editTaskHandler() {},
+      editTaskHandler(oEvent) {
+        const { id, Status, title, priority, dueDate, category } = oEvent
+          .getSource()
+          .getBindingContext()
+          .getObject();
+        this.openAddTaskDialog();
+
+        this.getView()
+          .byId("idDatePickerInputTask")
+          .setDateValue(new Date(dueDate));
+
+        this.getView().byId("idInputTaskDescription").setValue(title);
+        this.getView().byId("idPriorityInputTask").setSelectedKey(priority);
+        this.getView().byId("idCategoryInputTask").setSelectedKey(category);
+      },
 
       markCompleteteTaskHandler(oEvent) {
         const { id } = oEvent.getSource().getBindingContext().getObject();
