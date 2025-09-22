@@ -1,8 +1,8 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-    <Dialog id="idDialogMain" title="Task Details">
+    <Dialog id="idDialogMain" title="{i18n>TaskDialogTitle}">
         <content>
             <VBox id="idInputVbox" width="100%" class="dialogContent">
-                <Input id="inputFrgments" placeholder="Task description"/>
+                <Input id="idInputTaskDescription" placeholder="Task description" required="true"/>
             </VBox>
             <HBox id="idDatePickerHbox" justifyContent="Start" alignItems="Center" class="sapUiSmallMarginTop">
                 <Label id="idLabelTaskDatePicker" text="Due date" class="sapUiTinyMargin" width="70px"/>

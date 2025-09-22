@@ -5,13 +5,13 @@ sap.ui.define(
 
     return Controller.extend("hds.ui5.todolistadvance.controller.View1", {
       onInit() {},
-      submitTaskHandler() {
-        const sInputTask = this.getView().byId("idInputTask").getValue();
+      openAddTaskDialog() {
+        // const sInputTask = this.getView().byId("idInputTask").getValue();
 
-        if (!sInputTask.trim()) {
-          this.getView().byId("idInputTask").setValue("");
-          return;
-        }
+        // if (!sInputTask.trim()) {
+        //   this.getView().byId("idInputTask").setValue("");
+        //   return;
+        // }
 
         if (!this.pDialog) {
           this.pDialog = this.loadFragment({
@@ -25,9 +25,23 @@ sap.ui.define(
       },
 
       addTaskDialogBoxHandler() {
-        this.byId("idDialogMain").close();
+        const oView = this.getView();
+        const taskDescription = this.getView()
+          .byId("idInputTaskDescription")
+          .getValue();
+        const taskDueDate = this.getView()
+          .byId("idDatePickerInputTask")
+          .getValue();
+        const taskPriority = this.getView()
+          .byId("idPriorityInputTask")
+          .getSelectedItem()
+          .getText();
+        const taskCategory = this.getView()
+          .byId("idCategoryInputTask")
+          .getSelectedItem()
+          .getText();
 
-        // const sCurrentInputTask = this.getView().byId("idInputTask").getValue();
+        this.byId("idDialogMain").close();
         this.getView().byId("idInputTask").setValue("");
       },
 
