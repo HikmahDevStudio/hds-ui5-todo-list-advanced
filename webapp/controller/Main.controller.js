@@ -65,9 +65,7 @@ sap.ui.define(
           });
         }
 
-        this.pDialog.then(function (oDialog) {
-          oDialog.open();
-        });
+        this.pDialog.then((oDialog) => oDialog.open());
       },
 
       addTaskDialogBoxHandler() {
@@ -187,11 +185,15 @@ sap.ui.define(
       },
 
       editTaskHandler(oEvent) {
-        const { id, Status, title, priority, dueDate, category } = oEvent
+        this.openAddTaskDialog();
+        this.populateTaskDetailsInDialogBox(oEvent);
+      },
+
+      populateTaskDetailsInDialogBox(oEvent) {
+        const { id, title, priority, dueDate, category } = oEvent
           .getSource()
           .getBindingContext()
           .getObject();
-        this.openAddTaskDialog();
 
         this.getView()
           .byId("idDatePickerInputTask")
@@ -210,20 +212,12 @@ sap.ui.define(
 
       markCompleteteTaskHandler(oEvent) {
         const { id } = oEvent.getSource().getBindingContext().getObject();
-
         const oModel = this.getView().getModel();
         const aAllTask = oModel.getProperty("/tasks") || [];
 
-        const aUpdatedTask = aAllTask.map((task) => {
-          if (task.id === id) {
-            return {
-              ...task,
-              Status: "Completed",
-            };
-          } else {
-            return task;
-          }
-        });
+        const aUpdatedTask = aAllTask.map((task) =>
+          task.id === id ? { ...task, Status: "Completed" } : task
+        );
 
         oModel.setProperty("/tasks", aUpdatedTask);
       },

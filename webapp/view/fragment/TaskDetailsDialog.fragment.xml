@@ -27,7 +27,7 @@
         </content>
         <buttons>
             <Button id="idClearDialogBox" press="cancelTaskDialogBoxHandler" text="Cancel" type="Reject"></Button>
-            <Button id="idCloseDialogBox" press="addTaskDialogBoxHandler" text="Add" type="Accept"></Button>
+            <Button id="idBtnAddTaskDialogBox" press="addTaskDialogBoxHandler" text="Add" type="Accept"></Button>
         </buttons>
     </Dialog>
 </core:FragmentDefinition>
