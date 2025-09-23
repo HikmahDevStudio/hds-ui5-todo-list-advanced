@@ -1,11 +1,16 @@
 sap.ui.define(
-  ["sap/ui/core/mvc/Controller", "sap/ui/core/Fragment", "sap/m/MessageToast"],
-  (Controller, Fragment, MessageToast) => {
+  [
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/core/Fragment",
+    "sap/m/MessageToast",
+    "hds/ui5/todolistadvance/util/formatter",
+  ],
+  (Controller, Fragment, MessageToast, Formatter) => {
     "use strict";
 
     return Controller.extend("hds.ui5.todolistadvance.controller.View1", {
       onInit() {},
-
+      formatter: Formatter,
       onTaskSubmit() {
         this.addTaskDialogBoxHandler();
       },
@@ -58,7 +63,8 @@ sap.ui.define(
         }
       },
 
-      openAddTaskDialog() {
+      openAddTaskDialog({ isEditMode = false } = {}) {
+        this.getView().getModel().setProperty("/isEditMode", isEditMode);
         if (!this.pDialog) {
           this.pDialog = this.loadFragment({
             name: "hds.ui5.todolistadvance.view.fragment.TaskDetailsDialog",
@@ -87,8 +93,18 @@ sap.ui.define(
           .getSelectedItem()
           .getText();
 
+        const isEditMode = this.getView().getModel().getProperty("/isEditMode");
+
+        function getTaskId(_this) {
+          const taskId = isEditMode
+            ? _this.idCurrentSelectedTask
+            : new Date().getTime().toString();
+
+          return taskId;
+        }
+
         const oInputTask = {
-          id: new Date().getTime().toString(),
+          id: getTaskId(this),
           title: taskDescription,
           priority: taskPriority,
           dueDate: taskDueDate,
@@ -107,7 +123,15 @@ sap.ui.define(
 
         const oModel = this.getView().getModel();
         const aTaskList = oModel.getProperty("/tasks") || [];
-        oModel.setProperty("/tasks", [...aTaskList, oInputTask]);
+
+        if (isEditMode) {
+          const aUpdatedTask = aTaskList.map((task) =>
+            task.id === this.idCurrentSelectedTask ? oInputTask : task
+          );
+          oModel.setProperty("/tasks", [...aUpdatedTask]);
+        } else {
+          oModel.setProperty("/tasks", [...aTaskList, oInputTask]);
+        }
 
         this.resetInputTasksFields();
         this.byId("idDialogMain").close();
@@ -176,7 +200,6 @@ sap.ui.define(
 
       deleteTaskHandler(oEvent) {
         const { id } = oEvent.getSource().getBindingContext().getObject();
-
         const oModel = this.getView().getModel();
         const aTask = oModel.getProperty("/tasks") || [];
         const aUpdatedTask = aTask.filter((task) => task.id !== id);
@@ -185,7 +208,7 @@ sap.ui.define(
       },
 
       editTaskHandler(oEvent) {
-        this.openAddTaskDialog();
+        this.openAddTaskDialog({ isEditMode: true });
         this.populateTaskDetailsInDialogBox(oEvent);
       },
 
@@ -194,6 +217,8 @@ sap.ui.define(
           .getSource()
           .getBindingContext()
           .getObject();
+
+        this.idCurrentSelectedTask = id;
 
         this.getView()
           .byId("idDatePickerInputTask")

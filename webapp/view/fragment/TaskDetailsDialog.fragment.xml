@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-    <Dialog id="idDialogMain" title="{i18n>TaskDialogTitle}">
+    <Dialog id="idDialogMain" title="{path: '/isEditMode', formatter: '.formatter.getDialogTitle'}">
         <content>
             <VBox id="idInputVbox" width="100%" class="dialogContent">
                 <Input submit="onTaskSubmit" id="idInputTaskDescription" liveChange="inputTaskLiveChange" placeholder="Task description" required="true"/>
@@ -27,7 +27,7 @@
         </content>
         <buttons>
             <Button id="idClearDialogBox" press="cancelTaskDialogBoxHandler" text="Cancel" type="Reject"></Button>
-            <Button id="idBtnAddTaskDialogBox" press="addTaskDialogBoxHandler" text="Add" type="Accept"></Button>
+            <Button id="idBtnAddTaskDialogBox" press="addTaskDialogBoxHandler" text="{= ${/isEditMode} ? 'Update' : 'Add'}" type="Accept"></Button>
         </buttons>
     </Dialog>
 </core:FragmentDefinition>
