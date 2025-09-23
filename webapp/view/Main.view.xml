@@ -5,7 +5,7 @@
     <Page id="page" title="{i18n>titleMainView}">
         <content>
             <HBox id="inputHbox">
-                <Button press="openAddTaskDialog" icon="sap-icon://add" id="enterTaskBtn" text="Add Task!" type="Default" width="200px" class="sapUi-Std-PaddingL"></Button>
+                <Button press="openAddTaskDialog" icon="sap-icon://add" id="idBtnOpenTaskDialog" text="Add Task!" type="Default" width="200px" class="sapUi-Std-PaddingL"></Button>
             </HBox>
                 <List
                     id="taskList_pending"
