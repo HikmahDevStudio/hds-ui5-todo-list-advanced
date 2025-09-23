@@ -198,13 +198,34 @@ sap.ui.define(
         this.byId("idDialogMain").close();
       },
 
-      deleteTaskHandler(oEvent) {
-        const { id } = oEvent.getSource().getBindingContext().getObject();
+      getConfirmationDeleteTask() {
+        if (!this.deleteTaskDialog) {
+          this.deleteTaskDialog = this.loadFragment({
+            name: "hds.ui5.todolistadvance.view.fragment.TaskDeleteConfirmation",
+          });
+        }
+
+        this.deleteTaskDialog.then((oDialog) => oDialog.open());
+      },
+
+      closeDialogDeleteTask() {
+        this.byId("idDialogDeleteTaskConfirmation").close();
+      },
+
+      proceedTaskDelete() {
         const oModel = this.getView().getModel();
         const aTask = oModel.getProperty("/tasks") || [];
-        const aUpdatedTask = aTask.filter((task) => task.id !== id);
-
+        const aUpdatedTask = aTask.filter(
+          (task) => task.id !== this.idSelectedTaskForDeletion
+        );
         oModel.setProperty("/tasks", aUpdatedTask);
+        this.closeDialogDeleteTask();
+      },
+
+      deleteTaskHandler(oEvent) {
+        const { id } = oEvent.getSource().getBindingContext().getObject();
+        this.idSelectedTaskForDeletion = id;
+        this.getConfirmationDeleteTask();
       },
 
       editTaskHandler(oEvent) {
