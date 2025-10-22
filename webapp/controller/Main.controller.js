@@ -14,6 +14,7 @@ sap.ui.define(
         const aTaskList = this.getView()?.getModel()?.getProperty("/tasks") || [];
         const bCompletedTaskExist = aTaskList.some(task => task.Status === "Completed");
 
+        // "Comlete" task list to be visible only on tasks are completed
         oListCompletedTask.setVisible(bCompletedTaskExist);
       },
 
