@@ -9,8 +9,16 @@ sap.ui.define(
     "use strict";
 
     return Controller.extend("hds.ui5.todolistadvance.controller.View1", {
-      onInit() {},
+      onInit() {
+        const oListCompletedTask = this.getView().byId("taskList_completed");
+        const aTaskList = this.getView()?.getModel()?.getProperty("/tasks") || [];
+        const bCompletedTaskExist = aTaskList.some(task => task.Status === "Completed");
+
+        oListCompletedTask.setVisible(bCompletedTaskExist);
+      },
+
       formatter: Formatter,
+      
       onTaskSubmit() {
         this.addTaskDialogBoxHandler();
       },
