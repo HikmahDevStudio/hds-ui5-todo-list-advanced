@@ -1,0 +1,8 @@
+<mvc:View controllerName="hds.ui5.todolistadvance.controller.App"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <VBox id="rootVbox" class="centeredPage">
+        <App id="app" />
+    </VBox>
+</mvc:View>

@@ -1,0 +1,48 @@
+{
+  "tasks": [],
+  "isEditMode": false,
+  "priority": [
+    {
+      "id": "",
+      "title": "Select"
+    },
+    {
+      "id": "LOW",
+      "title": "Low"
+    },
+    {
+      "id": "MEDIUM",
+      "title": "Medium"
+    },
+    {
+      "id": "HIGH",
+      "title": "High"
+    },
+    {
+      "id": "CRITICAL",
+      "title": "Critical"
+    }
+  ],
+  "category": [
+    {
+      "id": "",
+      "title": "Select"
+    },
+    {
+      "id": "FINANCE",
+      "title": "Finance"
+    },
+    {
+      "id": "SKILL",
+      "title": "Skill"
+    },
+    {
+      "id": "HOME",
+      "title": "Home"
+    },
+    {
+      "id": "OTHERS",
+      "title": "Others"
+    }
+  ]
+}
