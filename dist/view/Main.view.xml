@@ -2,16 +2,21 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>titleMainView}">
+    <Page id="page" title="{i18n>titleMainView}" >
         <content>
             <HBox id="inputHbox">
-                <Button press="openAddTaskDialog" icon="sap-icon://add" id="idBtnOpenTaskDialog" text="Add Task!" type="Default" width="200px" class="sapUi-Std-PaddingL"></Button>
+                <Input
+                    id="inputTask"
+                    submit="submitTaskHandler" 
+                    class="sapUiSmallMarginEnd sapUiSmallMarginBegin sapUiContentPadding"
+                    width="250px"
+                    placeholder="Please add new task"/>
+                <!-- <DatePicker id="idDatePickerInput"></DatePicker> -->
             </HBox>
                 <List
                     id="taskList_pending"
                     includeItemInSelection="true"
-                    mode="None"
-                    visible="{= ${/tasks}.length > 0 }"
+                    mode="MultiSelect"
                     items="{
                         path : '/tasks',
                         sorter : {
@@ -19,23 +24,26 @@
                             descending:true,
                             group : true
                         }
-                    }">
+                    }"
+                    >
                     <CustomListItem id="customListItem">
                         <HBox id="hbox_custLstItm" justifyContent="SpaceBetween" alignItems="Center">
-                            <Text id="idTaskTitle" text="{title}" class="sapUiSmallMarginBegin"/>
+                            <Link id="link" text="{title}" target="{title}" press="handlePress"/>
                             <HBox id="alighment" justifyContent="End" alignItems="Center">
-                                <Text id="idDueDate" text="{dueDate}" class="hoverActions sapUiSmallMarginEnd"/>
-                                <Text id="idCategory" text="{category}" class="hoverActions sapUiSmallMarginEnd"/>
-                                <Text id="idPriority" text="{priority}" class="hoverActions sapUiSmallMarginEnd"/>
+                                <Text id="idPriority" text="{priority}" class="sapUiSmallMarginEnd"/>
+                                
                                 <HBox id="taskActions" class="hoverActions">
-                                    <Button id="btnDelete" press="deleteTaskHandler" text="" icon="sap-icon://delete" class=" sapUiSmallMarginTopBottom"/>
-                                    <Button id="btnEdit" enabled="{= ${Status} !== 'Completed' }" press="editTaskHandler" text="" icon="sap-icon://edit" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
-                                    <Button enabled="{= ${Status} !== 'Completed' }" id="btnComplete" press="markCompleteteTaskHandler" text="" icon="sap-icon://complete" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom sapUiSmallMarginEnd" />
+                                    <Button id="btnDelete" text="" icon="sap-icon://delete" class=" sapUiSmallMarginTopBottom"/>
+                                    <Button id="btnEdit" text="" icon="sap-icon://edit" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
+                                    <Button id="btnComplete" text="" icon="sap-icon://complete" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom sapUiSmallMarginEnd" />
                                 </HBox> 
                             </HBox>
+                            
                         </HBox>
                     </CustomListItem>
                 </List>
+            
+            
                 <List id="taskList_completed">
                     <items>
                         <StandardListItem id="todolistItemCompleted" title="{title}"/>
@@ -46,7 +54,8 @@
             <Toolbar id="toolbarFooter">
                 <Text
                     id="footertext"
-                    text="Developed @ Hikmah Dev Studio by Shahabuddin Ansari" />
+                    text="Developed @ Hikmah Dev Studio by Shahabuddin Ansari"
+                />
             </Toolbar>
         </footer>
     </Page>
