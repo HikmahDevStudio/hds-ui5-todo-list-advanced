@@ -13,16 +13,15 @@
                     mode="None"
                     visible="{= ${/tasks}.length > 0 }"
                     items="{
-                        path : '/tasks',
-                        sorter : {
-                            path : 'Status',
-                            descending:true,
-                            group : true
-                        }
+                        path : '/tasks'
+                        
                     }">
                     <CustomListItem id="customListItem">
                         <HBox id="hbox_custLstItm" justifyContent="SpaceBetween" alignItems="Center">
-                            <Text id="idTaskTitle" text="{title}" class="sapUiSmallMarginBegin"/>
+                            <!-- <Text id="idTaskTitle" text="{title}" class="sapUiSmallMarginBegin"/> -->
+                            <!-- class="{= ${completed} ? 'strikeThrough' : '' }" />/ -->
+
+                            <Text id="idTaskTitle" text="{title}" class="taskCompleted"/>
                             <HBox id="alighment" justifyContent="End" alignItems="Center">
                                 <Text id="idDueDate" text="{dueDate}" class="hoverActions sapUiSmallMarginEnd"/>
                                 <Text id="idCategory" text="{category}" class="hoverActions sapUiSmallMarginEnd"/>

@@ -1,5 +1,30 @@
 {
-  "tasks": [],
+  "tasks": [
+    {
+      "id": "1761204965838",
+      "title": "Task1",
+      "priority": "Critical",
+      "dueDate": "10/30/25",
+      "category": "Home",
+      "Status": "Pending"
+    },
+        {
+      "id": "176120496582228",
+      "title": "Task2",
+      "priority": "Critical",
+      "dueDate": "10/30/25",
+      "category": "Home",
+      "Status": "Pending"
+    },
+        {
+      "id": "176120496544444838",
+      "title": "Task3",
+      "priority": "Critical",
+      "dueDate": "10/30/25",
+      "category": "Home",
+      "Status": "Completed"
+    }
+  ],
   "isEditMode": false,
   "priority": [
     {

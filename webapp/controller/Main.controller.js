@@ -125,7 +125,7 @@ sap.ui.define(
 
         if (isMandatoryFieldMissing) {
           MessageToast.show("Please provide missing details", {
-            width: "250px",
+            // width: "250px",
           });
           return;
         }
@@ -144,6 +144,8 @@ sap.ui.define(
 
         this.resetInputTasksFields();
         this.byId("idDialogMain").close();
+
+        console.log("Tasks --> ", JSON.stringify(this.getView().getModel().getProperty("/tasks")))
       },
 
       validateTaskInputDetails() {
@@ -276,6 +278,11 @@ sap.ui.define(
 
         oModel.setProperty("/tasks", aUpdatedTask);
       },
+
+      updateLabelOnTaskCompletion() {
+        const oTaskTitle = this.getView().byId("idTaskTitle");
+        
+      }
     });
   }
 );
