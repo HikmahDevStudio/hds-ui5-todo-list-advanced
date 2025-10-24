@@ -2,7 +2,8 @@ sap.ui.define([], function () {
   "use strict";
 
   return {
-    getDialogTitle: function (isEditMode) {
+    getDialogTitle(isEditMode) {
+      console.log("+++ getDialogTitle --- isEditMode -- ", isEditMode);
       const oResourceBundle = this.getOwnerComponent()
         .getModel("i18n")
         .getResourceBundle();
@@ -15,6 +16,11 @@ sap.ui.define([], function () {
         default:
           return oResourceBundle.getText("TaskDialogTitleEditMode");
       }
+    },
+
+    getTaskTitleStyleClass(taskStatus) {
+      console.log("++++ getTaskTitleStyleClass - taskStatus -- ", taskStatus);
+      return taskStatus === "Completed" ? "taskCompleted" : "";
     },
   };
 });
