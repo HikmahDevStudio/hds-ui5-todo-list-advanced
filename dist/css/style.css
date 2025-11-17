@@ -1,0 +1,25 @@
+/* Enter your custom styles here */
+
+.centeredPage {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.hoverActions {
+  visibility: hidden;
+}
+
+.sapMLIB:hover {
+  opacity: 0.95;
+}
+.sapMLIB:hover .hoverActions {
+  visibility: visible;
+}
+
+.dialogContent {
+  padding: 0.5rem;
+}
+
+.taskCompleted {
+  text-decoration: line-through;
+}

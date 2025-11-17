@@ -1,0 +1,2 @@
+sap.ui.define([],function(){"use strict";return{getDialogTitle:function(e){const t=this.getOwnerComponent().getModel("i18n").getResourceBundle();switch(e){case true:return t.getText("TaskDialogTitleEditMode");case false:return t.getText("TaskDialogTitle");default:return t.getText("TaskDialogTitleEditMode")}}}});
+//# sourceMappingURL=formatter.js.map
