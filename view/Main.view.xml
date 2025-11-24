@@ -3,7 +3,7 @@
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
     <Page id="page" title="{i18n>titleMainView}">
-        <headerContent><Link id="idCustomHeader" text="View code on Github" target="_blank" href="https://github.com/HikmahDevStudio/hds-ui5-todo-list-basic.git"/></headerContent>
+        <headerContent><Link id="idCustomHeader" text="View code on Github" target="_blank" href="https://github.com/HikmahDevStudio/hds-ui5-todo-list-advanced.git"/></headerContent>
         <content>
             <HBox id="inputHbox">
                 <Button press="openAddTaskDialog" icon="sap-icon://add" id="idBtnOpenTaskDialog" text="Add Task!" type="Default" width="200px" class="sapUi-Std-PaddingL"></Button>
